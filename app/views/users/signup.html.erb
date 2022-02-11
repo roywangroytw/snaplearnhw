@@ -5,22 +5,34 @@
   <div>
     <%= f.label :username, "Username" %>
     <%= f.text_field :username %>
+    <% if f.object.errors[:username]%>
+      <span><%= f.object.errors[:username][0] %></span>
+    <% end %>
   </div>	
 
   <div>
     <%= f.label :email, "Email" %>
     <%= f.email_field :email %>
+    <% if f.object.errors[:email]%>
+      <span><%= f.object.errors[:email][0] %></span>
+    <% end %>
   </div>	
 
 
   <div>
     <%= f.label :password, "Password" %>
     <%= f.password_field :password %>
+    <% if f.object.errors[:password]%>
+    <span><%= f.object.errors[:password][0] %></span>
+    <% end %>
   </div>
   
   <div>
     <%= f.label :password_confirmation, "Confirm Password" %>
     <%= f.password_field :password_confirmation %>
+    <% if f.object.errors[:password_confirmation]%>
+    <span><%= f.object.errors[:password_confirmation][0] %></span>
+    <% end %>
   </div>
 
   <div>
