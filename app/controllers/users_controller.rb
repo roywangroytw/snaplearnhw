@@ -8,7 +8,9 @@ class UsersController < ApplicationController
     @user = User.new(permit_params)
 
     if @user.save
-      redirect_to '/', notice: "註冊成功!"
+      user = User.login(permit_params)
+      session[:session] = user.id
+      redirect_to '/', notice: "歡迎加入SnapLearn，開始你的學習之旅吧～"
     else
       render :signup, alert: "抱歉好像出錯了，請再嘗試一次"
     end

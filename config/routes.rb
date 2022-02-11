@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 
   root "welcomes#index"
 
-  get '/sign_up', to: "users#signup"
-  post '/registering', to: "users#registering"
-  get '/login', to: "users#login"
-  post '/verifying', to: "users#verifying"
-  delete '/logout', to: "users#logout"
+  get 'sign_up', to: "users#signup"
+  post 'registering', to: "users#registering"
+  get 'login', to: "users#login"
+  post 'verifying', to: "users#verifying"
+  delete 'logout', to: "users#logout"
 
 end
