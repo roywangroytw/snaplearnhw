@@ -19,18 +19,24 @@ class UsersController < ApplicationController
   end
 
   def verifying
-    user = User.login(permit_params)
-    if user
-      session[:session] = user.id
-      redirect_to '/', notice: "登入成功"
-    else
-      render :login, alert: "帳號密碼組合不正確，請重新嘗試"
+
+    if params[:user][:username] == "" || params[:user][:password] == ""
+      redirect_to :login, alert: "帳號密碼必填唷!"
+    else   
+      user = User.login(permit_params)
+      if user
+        session[:session] = user.id
+        redirect_to '/', notice: "登入成功"
+      else
+        redirect_to :login, alert: "帳號密碼組合不正確，請重新嘗試"
+      end
     end
+
   end
 
   def logout
     session[:session] = nil
-    redirect_to '/', notice: "登出成功，下次見！"
+    redirect_to '/', notice: "登出成功，下次見!"
   end
 
   private
