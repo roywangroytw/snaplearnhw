@@ -1,0 +1,6 @@
+<% if user_is_login? %>
+  <%= link_to '登出', logout_path, method: "delete" %>
+<% else %>
+  <%= link_to '登入', login_path %>
+  <%= link_to '註冊', sign_up_path %>
+<% end %>

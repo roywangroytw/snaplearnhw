@@ -29,6 +29,8 @@ class UsersController < ApplicationController
   end
 
   def logout
+    session[:session] = nil
+    redirect_to '/', notice: "登出成功，下次見！"
   end
 
   private
