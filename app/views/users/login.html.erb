@@ -1,0 +1,19 @@
+<h1>登入SnapLearn</h1>
+
+<%= form_with(model: @user, url: verifying_path) do |f| %>
+
+  <div>
+    <%= f.label :username, "Username" %>
+    <%= f.text_field :username %>
+  </div>	
+
+  <div>
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %>
+  </div>	
+
+  <div>
+    <%= f.submit '登入' %>
+  </div>	
+
+<% end %>
