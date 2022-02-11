@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_11_134926) do
+ActiveRecord::Schema.define(version: 2022_02_11_142930) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password"
-    t.boolean "course_creator"
+    t.boolean "course_creator", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,0 +1,30 @@
+<h1>註冊SnapLearn</h1>
+
+<%= form_with(model: @user, url: registering_path) do |f| %>
+
+  <div>
+    <%= f.label :username, "Username" %>
+    <%= f.text_field :username %>
+  </div>	
+
+  <div>
+    <%= f.label :email, "Email" %>
+    <%= f.email_field :email %>
+  </div>	
+
+
+  <div>
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %>
+  </div>
+  
+  <div>
+    <%= f.label :password_confirmation, "Confirm Password" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div>
+    <%= f.submit '註冊' %>
+  </div>	
+
+<% end %>
