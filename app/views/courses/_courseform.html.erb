@@ -17,6 +17,11 @@
   </div>
 
   <div>
+    <%= f.label :status, "課程狀態" %>
+    <%= f.select :category, ["Publish", "Offshelf"], {prompt: "請選擇"} %>
+  </div>
+
+  <div>
     <%= f.label :validity_duration, "課程效期" %>
     <%= f.select :validity_duration, [1..31]%>
   </div>
@@ -24,6 +29,11 @@
   <div>
     <%= f.label :introduction, "課程簡介" %>
     <%= f.text_area :introduction %>
+  </div>
+
+  <div>
+    <%= f.label :personalized_prefix, "客製化連結" %>
+    <span>https://snaplearn/courses/ </span><%= f.text_field :introduction %>
   </div>
 
   <div>
