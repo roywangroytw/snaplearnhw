@@ -22,7 +22,11 @@
   
   <div>
     <%= f.label :category, "課程類別" %>
-    <%= f.collection_select :category, Category.all, :id, :name, {prompt: "請選擇"}, required: true %>
+    <% if request.path_info.include?('/courses/new')%>
+      <%= f.collection_select :category, Category.all, :id, :name, {prompt: "請選擇"}, required: true %>
+    <% else %>
+      <%= f.collection_select :category, Category.all, :id, :name, required: true, selected: course.categories[0].id %>
+    <% end %>  
   </div>
 
   <div>
@@ -35,7 +39,7 @@
 
   <div>
     <%= f.label :validity_duration, "課程效期" %>
-    <%= f.select :validity_duration, [1,2,3], required: true%>
+    <%= f.select :validity_duration, (1..31), required: true%> <span>天</span>
     <% if f.object.errors[:validity_duration] %>
       <span><%= f.object.errors[:validity_duration][0] %></span>
     <% end %>

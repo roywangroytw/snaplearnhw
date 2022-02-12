@@ -2,7 +2,7 @@
 
 <% @courses.each do |course| %>
   <div>
-    <h2><%= course.name %><span><%= course.categories.name %></span></h2>
+    <h2><%= course.name %> | <span><%= course.categories[0].name %></span></h2>
     <p><%= course.introduction %></p>
     <p>
       <span><%= currency_sign(course.currency) %></span>
@@ -12,5 +12,6 @@
       <span>效期:</span>
       <span><%= course.validity_duration %> 天</span>
     </p>
+    <%= link_to "查看課程", course_path(course.id) %>
   </div>
 <% end %>

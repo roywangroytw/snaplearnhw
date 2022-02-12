@@ -1,0 +1,19 @@
+<h1>課程內容</h1>
+
+<section>
+  <div>
+    <img src="https://picsum.photos/1500/400/?random=10">
+  </div>
+  <h2><%= @course.name %> | <span><%= @course.categories[0].name %></span></h2>
+  <p><%= @course.introduction %></p>
+  <div>
+    <p><span><%= currency_sign(@course.currency) %> </span><%= @course.price %></p>
+  </div>
+  <div>
+    <p>購買後，課程有效期為: <%= @course.validity_duration %> 天</p>
+  </div>
+  <div>
+    <%= link_to '修改課程', edit_course_path(@course) %>
+    <%= link_to '刪除課程', course_path(@course), method: "delete", data: { confirm: "確定要刪除此課程嗎？"} %>
+  </div>
+</section>

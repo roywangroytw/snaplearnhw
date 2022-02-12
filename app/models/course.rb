@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-  has_many :course_categories
+  has_many :course_categories, dependent: :delete_all
   has_many :categories, through: :course_categories
 
   extend FriendlyId
