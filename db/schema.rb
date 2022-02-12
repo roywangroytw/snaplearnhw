@@ -10,7 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_11_142930) do
+ActiveRecord::Schema.define(version: 2022_02_12_055233) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "course_categories", force: :cascade do |t|
+    t.integer "course_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_course_categories_on_category_id"
+    t.index ["course_id"], name: "index_course_categories_on_course_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.string "currency"
+    t.integer "validity_duration"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "introduction"
+    t.string "slug"
+    t.string "personalized_prefix"
+    t.integer "user_id"
+    t.index ["name"], name: "index_courses_on_name"
+    t.index ["slug"], name: "index_courses_on_slug", unique: true
+    t.index ["user_id"], name: "index_courses_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -21,4 +53,6 @@ ActiveRecord::Schema.define(version: 2022_02_11_142930) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "course_categories", "categories"
+  add_foreign_key "course_categories", "courses"
 end
