@@ -2,29 +2,29 @@
 
   <div>
     <%= f.label :name, "課程名稱" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, required: true %>
   </div>	
 
   <div>
     <%= f.label :price , "價格" %>
-    <%= f.number_field :price %>
+    <%= f.number_field :price, required: true %>
     <%= f.label :currency , "幣別" %>
-    <%= f.select :currency, [["新台幣(NT$)", "TWD"], ["美金($)", "USD"], ["英鎊(£)", "GBP"], ["歐元(€)", "EUR"], ["新加坡幣(SG$)", "SGD"], ["日幣(¥)", "JPY"]], {prompt: "請選擇"} %>
+    <%= f.select :currency, [["新台幣(NT$)", "TWD"], ["美金($)", "USD"], ["英鎊(£)", "GBP"], ["歐元(€)", "EUR"], ["新加坡幣(SG$)", "SGD"], ["日幣(¥)", "JPY"]], {prompt: "請選擇"}, required: true %>
   </div>	
   
   <div>
     <%= f.label :category, "課程類別" %>
-    <%= f.collection_select :category, Category.all, :id, :name, {prompt: "請選擇"} %>
+    <%= f.collection_select :category, Category.all, :id, :name, {prompt: "請選擇"}, required: true %>
   </div>
 
   <div>
     <%= f.label :status, "課程狀態" %>
-    <%= f.select :status, ["Publish", "Offshelf"], {prompt: "請選擇"} %>
+    <%= f.select :status, ["Publish", "Offshelf"], {prompt: "請選擇"}, required: true %>
   </div>
 
   <div>
     <%= f.label :validity_duration, "課程效期" %>
-    <%= f.select :validity_duration, [1,2,3]%>
+    <%= f.select :validity_duration, [1,2,3], required: true%>
   </div>
 
   <div>
@@ -34,7 +34,7 @@
 
   <div>
     <%= f.label :personalized_prefix, "客製化連結" %>
-    <span>https://snaplearn/courses/ </span><%= f.text_field :personalized_prefix %>
+    <span>https://snaplearn/courses/ </span><%= f.text_field :personalized_prefix, required: true %>
   </div>
 
   <div>
