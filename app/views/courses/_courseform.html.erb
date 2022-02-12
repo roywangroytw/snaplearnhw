@@ -3,13 +3,21 @@
   <div>
     <%= f.label :name, "課程名稱" %>
     <%= f.text_field :name, required: true %>
+    <% if f.object.errors[:name] %>
+      <span><%= f.object.errors[:name][0] %></span>
+    <% end %>
   </div>	
 
   <div>
     <%= f.label :price , "價格" %>
-    <%= f.number_field :price, required: true %>
-    <%= f.label :currency , "幣別" %>
     <%= f.select :currency, [["新台幣(NT$)", "TWD"], ["美金($)", "USD"], ["英鎊(£)", "GBP"], ["歐元(€)", "EUR"], ["新加坡幣(SG$)", "SGD"], ["日幣(¥)", "JPY"]], {prompt: "請選擇"}, required: true %>
+    <%= f.number_field :price, required: true %>
+    <% if f.object.errors[:price] %>
+      <span><%= f.object.errors[:price][0] %></span>
+    <% end %>
+    <% if f.object.errors[:price] %>
+      <span><%= f.object.errors[:currency][0] %></span>
+    <% end %>
   </div>	
   
   <div>
@@ -20,21 +28,33 @@
   <div>
     <%= f.label :status, "課程狀態" %>
     <%= f.select :status, ["Publish", "Offshelf"], {prompt: "請選擇"}, required: true %>
+    <% if f.object.errors[:status] %>
+      <span><%= f.object.errors[:status][0] %></span>
+    <% end %>
   </div>
 
   <div>
     <%= f.label :validity_duration, "課程效期" %>
     <%= f.select :validity_duration, [1,2,3], required: true%>
+    <% if f.object.errors[:validity_duration] %>
+      <span><%= f.object.errors[:validity_duration][0] %></span>
+    <% end %>
   </div>
 
   <div>
     <%= f.label :introduction, "課程簡介" %>
     <%= f.text_area :introduction %>
+    <% if f.object.errors[:introduction] %>
+      <span><%= f.object.errors[:introduction][0] %></span>
+    <% end %>
   </div>
 
   <div>
     <%= f.label :personalized_prefix, "客製化連結" %>
     <span>https://snaplearn/courses/ </span><%= f.text_field :personalized_prefix, required: true %>
+    <% if f.object.errors[:personalized_prefix] %>
+      <span><%= f.object.errors[:personalized_prefix][0] %></span>
+    <% end %>
   </div>
 
   <div>
