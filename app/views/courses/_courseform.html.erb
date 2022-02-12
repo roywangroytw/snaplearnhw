@@ -1,0 +1,33 @@
+<%= form_with(model: course, path: prefix_path, method: method) do |f| %>
+
+  <div>
+    <%= f.label :name, "課程名稱" %>
+    <%= f.text_field :name %>
+  </div>	
+
+  <div>
+    <%= f.label :price , "價格" %>
+    <%= f.select :currency, [["新台幣(NT$)", "TWD"], ["美金($)", "USD"], ["英鎊(£)", "GBP"], ["歐元(€)", "EUR"], ["新加坡幣(SG$)", "SGD"], ["日幣(¥)", "JPY"]], {prompt: "請選擇"} %>
+    <%= f.number_field :price %>
+  </div>	
+  
+  <div>
+    <%= f.label :category, "課程類別" %>
+    <%= f.collection_select :category, Category.all, :id, :name, {prompt: "請選擇"} %>
+  </div>
+
+  <div>
+    <%= f.label :validity_duration, "課程效期" %>
+    <%= f.select :validity_duration, [1..31]%>
+  </div>
+
+  <div>
+    <%= f.label :introduction, "課程簡介" %>
+    <%= f.text_area :introduction %>
+  </div>
+
+  <div>
+    <%= f.submit btn_name %>
+  </div>	
+
+<% end %>
