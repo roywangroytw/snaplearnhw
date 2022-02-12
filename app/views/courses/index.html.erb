@@ -1,4 +1,9 @@
-<h1>所有課程</h1>
+<div>
+  <h1>所有課程</h1>
+  <% if user_is_admin? %>
+    <%= link_to '創建新課程', new_course_path %>
+  <% end %>
+</div>
 
 <% @courses.each do |course| %>
   <div>

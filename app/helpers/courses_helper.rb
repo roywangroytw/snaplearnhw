@@ -23,7 +23,11 @@ module CoursesHelper
   end
 
   def user_is_admin?
-    current_user.course_creator == true ? true : false
+    if session[:session]
+      current_user.course_creator == true ? true : false
+    else
+      false
+    end  
   end
 
 end
