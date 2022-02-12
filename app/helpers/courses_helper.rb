@@ -17,4 +17,17 @@ module CoursesHelper
     end
   end
 
+  def course_belongs_to_user?(course_id)
+    courses_of_users = current_user.courses
+    courses_of_users.include?(Course.friendly.find(course_id)) ? true : false
+  end
+
+  def user_is_admin?
+    if session[:session]
+      current_user.course_creator == true ? true : false
+    else
+      false
+    end  
+  end
+
 end
