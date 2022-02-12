@@ -4,4 +4,6 @@ class Course < ApplicationRecord
 
   extend FriendlyId
   friendly_id :personalized_prefix, use: :slugged
+
+  validates :name, presence: { message: "課程名稱必填"}
 end
