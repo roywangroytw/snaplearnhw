@@ -1,0 +1,16 @@
+<h1>所有課程</h1>
+
+<% @courses.each do |course| %>
+  <div>
+    <h2><%= course.name %><span><%= course.categories.name %></span></h2>
+    <p><%= course.introduction %></p>
+    <p>
+      <span><%= currency_sign(course.currency) %></span>
+      <%= course.price %>
+    </p>
+    <p>
+      <span>效期:</span>
+      <span><%= course.validity_duration %> 天</span>
+    </p>
+  </div>
+<% end %>

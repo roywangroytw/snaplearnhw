@@ -1,4 +1,4 @@
-<%= form_with(model: course, path: prefix_path, method: method) do |f| %>
+<%= form_with(model: course, url: prefix_path, method: method) do |f| %>
 
   <div>
     <%= f.label :name, "課程名稱" %>
@@ -7,8 +7,9 @@
 
   <div>
     <%= f.label :price , "價格" %>
-    <%= f.select :currency, [["新台幣(NT$)", "TWD"], ["美金($)", "USD"], ["英鎊(£)", "GBP"], ["歐元(€)", "EUR"], ["新加坡幣(SG$)", "SGD"], ["日幣(¥)", "JPY"]], {prompt: "請選擇"} %>
     <%= f.number_field :price %>
+    <%= f.label :currency , "幣別" %>
+    <%= f.select :currency, [["新台幣(NT$)", "TWD"], ["美金($)", "USD"], ["英鎊(£)", "GBP"], ["歐元(€)", "EUR"], ["新加坡幣(SG$)", "SGD"], ["日幣(¥)", "JPY"]], {prompt: "請選擇"} %>
   </div>	
   
   <div>
@@ -18,12 +19,12 @@
 
   <div>
     <%= f.label :status, "課程狀態" %>
-    <%= f.select :category, ["Publish", "Offshelf"], {prompt: "請選擇"} %>
+    <%= f.select :status, ["Publish", "Offshelf"], {prompt: "請選擇"} %>
   </div>
 
   <div>
     <%= f.label :validity_duration, "課程效期" %>
-    <%= f.select :validity_duration, [1..31]%>
+    <%= f.select :validity_duration, [1,2,3]%>
   </div>
 
   <div>
@@ -33,7 +34,7 @@
 
   <div>
     <%= f.label :personalized_prefix, "客製化連結" %>
-    <span>https://snaplearn/courses/ </span><%= f.text_field :introduction %>
+    <span>https://snaplearn/courses/ </span><%= f.text_field :personalized_prefix %>
   </div>
 
   <div>
