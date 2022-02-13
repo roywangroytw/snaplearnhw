@@ -1,0 +1,23 @@
+<div class="header">
+  <img src="/images/snaplearn_logo.png">
+
+  <% if user_is_login? %>
+    <div class="header_link_box_login">
+      <% if user_is_admin?  %>
+        <div class="header_link_box_login_admin">
+          <%= link_to '我的課程', mycourses_courses_path %>
+          <%= link_to '管理', admin_management_courses_path %>
+          <%= link_to '登出', logout_path, method: "delete" %>
+        </div>
+      <% else %>
+        <%= link_to '我的課程', mycourses_courses_path %>
+        <%= link_to '登出', logout_path, method: "delete" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="header_link_box_logout">
+      <%= link_to '登入', login_path %>
+      <%= link_to '註冊', sign_up_path %>
+    </div>
+  <% end %>
+</div>

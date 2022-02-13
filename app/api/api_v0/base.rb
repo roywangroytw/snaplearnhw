@@ -6,5 +6,6 @@ module ApiV0
     use ApiV0::Auth::Middleware
 
     mount Order
+    mount Mycourse
   end
 end
