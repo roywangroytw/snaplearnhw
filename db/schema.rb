@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_13_060602) do
+ActiveRecord::Schema.define(version: 2022_02_13_073820) do
+
+  create_table "api_access_tokens", force: :cascade do |t|
+    t.string "key"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_api_access_tokens_on_user_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -70,6 +78,7 @@ ActiveRecord::Schema.define(version: 2022_02_13_060602) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "api_access_tokens", "users"
   add_foreign_key "course_categories", "categories"
   add_foreign_key "course_categories", "courses"
   add_foreign_key "orders", "courses"

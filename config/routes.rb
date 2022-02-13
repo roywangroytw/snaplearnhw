@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     end
   end
 
+  mount ApiRoot => ApiRoot::PREFIX
+
 end
