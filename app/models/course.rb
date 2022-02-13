@@ -15,4 +15,7 @@ class Course < ApplicationRecord
   validates :personalized_prefix, presence: { message: "請給填寫一個客製化名稱" }, 
                                   uniqueness: true,
                                   format: { with: /[a-zA-Z0-9]/, message: "只能包含英文字母與數字"}
+
+  private
+  
 end

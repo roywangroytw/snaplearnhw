@@ -14,7 +14,8 @@ Rails.application.routes.draw do
       get 'admin/management', to: "courses#manage"
     end
     member do
-      get :purchase, to: "courses#purchase"
+      get :purchase, to: "orders#purchase"
+      get :ordersuccess, to: "orders#ordersuccess"
     end
   end
 

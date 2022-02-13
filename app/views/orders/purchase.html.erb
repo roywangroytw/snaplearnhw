@@ -1,8 +1,8 @@
 <div>
   <h1>購買課程</h1>
 </div>
-
-<section class="payment_section">
+<div class="payment_error_message"></div>
+<section class="payment_section" data-controller="purchase" >
   <div class="payment_product_details">
     <h2>課程明細</h2>
     <div>
@@ -32,7 +32,10 @@
     </div>
     <div>
       <p class="payment_titles">付款方式:</p>
-      <select name="payment_type">
+      <select name="payment_type" 
+              data-purchase-target="paymentselector" 
+              data-action="change->purchase#capturePaymentType">
+        <option value="Null">請選擇</option>
         <option value="VISA">Visa信用卡</option>
         <option value="MASTER">Master信用卡</option>
       </select>
@@ -50,6 +53,13 @@
       <p class="payment_titles">信用卡後三碼:</p>
       <input type="number">
     </div>
-    <button class="payment_btn">確認購買</button>
+    <button data-purchase-target="purchasebtn" 
+            data-action="click->purchase#makeOrder"
+            class="payment_btn"
+            data-key="<%= current_user.api_access_token.key%>"  >確認購買</button>
   </div>
 </section>
+<div class="order_loader">
+  <img src="/images/buying.gif">
+  <p>訂單處理中，請稍候</p>
+</div>

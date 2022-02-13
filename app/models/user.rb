@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :courses, dependent: :destroy
   has_many :orders
+  has_one :api_access_token
 
   validates :username, presence: { message: "帳號必填" }, 
                        uniqueness: { message: "該帳號已有人使用" }
@@ -19,6 +20,19 @@ class User < ApplicationRecord
                        confirmation: { message: "密碼不吻合" }
 
   validates :password_confirmation, presence: { message: "請重複輸入密碼" } 
+
+  def can_buy_again?(course_id)
+    orders = self.orders.select(:course_id, :valid_until)
+    evidence = 0
+
+    orders.each do |order|
+      if order.course_id == course_id && order.valid_until > Time.current
+        evidence += 1
+      end
+    end
+    
+    evidence == 0 ? true : false
+  end
 
   private
 

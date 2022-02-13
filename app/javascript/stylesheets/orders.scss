@@ -1,0 +1,66 @@
+// Place all the styles related to the orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.payment_section {
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+
+  .payment_titles {
+    border-bottom: 1px solid grey;
+  }
+
+  .payment_product_details {
+    width: 48%;
+  }
+  .payment_details {
+    width: 48%;
+
+    div {
+      margin-bottom: 20px;
+    }
+
+    input, select {
+      width: 200px;
+    }
+
+    .payment_btn {
+      width: 200px;
+      display: block;
+      margin-top: 20px;
+    }
+
+    .expiration_date_section {
+      input {
+        width: 70px;
+      }
+    }
+  }
+
+}
+
+.order_loader {
+  width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  position: relative;
+  bottom: 250px;
+  display: none;
+
+  img {
+    width: 100%;
+  }
+}
+
+.order_loader_show {
+  display: flex;
+}

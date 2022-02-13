@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
 
-  before_action :authenticate_user, except: [:index, :show, :purchase]
+  before_action :authenticate_user, except: [:index, :show]
 
   def index
     @courses = Course.where(status: "Publish").includes(:course_categories)
@@ -52,10 +52,6 @@ class CoursesController < ApplicationController
 
   def manage
     @courses = current_user.courses
-  end
-
-  def purchase
-    @course = Course.friendly.find(params[:id])
   end
 
   private
