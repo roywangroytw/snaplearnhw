@@ -28,8 +28,7 @@ export default class extends Controller {
       const api_response = await fetch_api()
       const resultdiv = document.querySelector(".mycourses_row")
       
-      if (api_response !== 0) {
-        console.log(api_response);
+      if (api_response.length !== 0) {
 
         api_response.forEach((course) => {
 
@@ -64,6 +63,10 @@ export default class extends Controller {
           resultdiv.appendChild(messagediv)
 
         })
+      } else {
+        const messagediv = document.createElement("div")
+        messagediv.innerText = "目前您尚未購買過任何課程"
+        resultdiv.appendChild(messagediv)
       }
     }
     
