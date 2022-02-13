@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
 
-  before_action :authenticate_user, except: [:index, :show]
+  before_action :authenticate_admin, except: [:index, :show, :mycourses]
+  before_action :authenticate_user, only: [:mycourses]
 
   def index
     @courses = Course.where(status: "Publish").includes(:course_categories)
@@ -53,6 +54,8 @@ class CoursesController < ApplicationController
   def manage
     @courses = current_user.courses
   end
+
+  def mycourses; end
 
   private
 

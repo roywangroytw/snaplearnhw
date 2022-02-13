@@ -3,7 +3,7 @@ module ApiV0
     class Mycourse < Entities::Base
       expose :name
       expose :introduction
-      expose :status
+      expose :slug
       expose :orders, using: ApiV0::Entities::Order
     end
   end
