@@ -1,0 +1,26 @@
+<div class="pagetitle_div">
+  <h1>我的所有課程</h1>
+  <%= link_to '新增課程', new_course_path %>
+</div>
+
+<section>
+  <div class="manage_table">
+    <p></p>
+    <p>課程名稱</p>
+    <p>科別</p>
+    <p>課程狀態</p>
+    <p>管理</p>
+  </div>
+  <% @courses.each_with_index do |course, index| %>
+  <div class="manage_table manage_table_action">
+    <p><%= (index + 1) %></p>
+    <p><%= course.name %></p>
+    <p><%= course.categories[0].name %></p>
+    <p><%= course_status(course.status) %></p>
+    <div>
+      <%= link_to '編輯', edit_course_path(course.id) %>
+      <%= link_to '刪除', course_path(course.id), method: "delete", data: { confirm: "您確定要刪除嗎？"} %>
+    </div>
+  </div>
+  <% end %>
+</section>

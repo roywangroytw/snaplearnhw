@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
 
   def index
-    @courses = Course.all.includes(:course_categories)
+    @courses = Course.where(status: "Publish").includes(:course_categories)
   end
 
   def show 
@@ -48,6 +48,10 @@ class CoursesController < ApplicationController
     else
       render :show, alert: "抱歉，似乎出了點錯誤，請重新嘗試"
     end
+  end
+
+  def manage
+    @courses = current_user.courses
   end
 
   private
