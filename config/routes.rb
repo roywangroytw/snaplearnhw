@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     collection do
       get 'admin/management', to: "courses#manage"
     end
+    member do
+      get :purchase, to: "courses#purchase"
+    end
   end
 
 end

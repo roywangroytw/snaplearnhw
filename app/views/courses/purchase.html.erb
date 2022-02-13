@@ -1,0 +1,55 @@
+<div>
+  <h1>購買課程</h1>
+</div>
+
+<section class="payment_section">
+  <div class="payment_product_details">
+    <h2>課程明細</h2>
+    <div>
+      <p class="payment_titles">課程名稱:</p>
+      <h3><%= @course.name %></h3>
+    </div>
+    <div>
+      <p class="payment_titles">課程有效期(截止日):</p>
+      <p><%= (Time.current + @course.validity_duration.days).strftime("%Y-%b-%d") %></p>
+    </div>
+    <div>
+      <p class="payment_titles">課程金額:</p>
+      <p>
+        <span><%= currency_sign(@course.currency) %></span> <%= @course.price %>
+        <span>(含稅)</span></p>
+    </div>  
+  </div>
+  <div class="payment_details">
+    <h2>付款明細</h2>
+    <div>
+      <p class="payment_titles">購買人:</p>
+      <input type="text" value="<%= current_user.username %>">
+    </div>
+    <div>
+      <p class="payment_titles">Email:</p>
+      <input type="email" value="<%= current_user.email %>">
+    </div>
+    <div>
+      <p class="payment_titles">付款方式:</p>
+      <select name="payment_type">
+        <option value="VISA">Visa信用卡</option>
+        <option value="MASTER">Master信用卡</option>
+      </select>
+    </div>
+    <div>
+      <p class="payment_titles">卡號:</p>
+      <input type="number">
+    </div>
+    <div class="expiration_date_section">
+      <p class="payment_titles">到期日:</p>
+      <span>年: </span><input type="number" placeholder="例:2023">
+      <span>月: </span><input type="number" placeholder="例:09">
+    </div>
+    <div>
+      <p class="payment_titles">信用卡後三碼:</p>
+      <input type="number">
+    </div>
+    <button class="payment_btn">確認購買</button>
+  </div>
+</section>

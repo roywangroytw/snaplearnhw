@@ -1,6 +1,7 @@
 class Course < ApplicationRecord
   has_many :course_categories, dependent: :delete_all
   has_many :categories, through: :course_categories
+  has_many :orders
 
   extend FriendlyId
   friendly_id :personalized_prefix, use: :slugged

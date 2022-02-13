@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_055233) do
+ActiveRecord::Schema.define(version: 2022_02_13_060602) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -44,6 +44,23 @@ ActiveRecord::Schema.define(version: 2022_02_12_055233) do
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "order_number"
+    t.datetime "valid_until"
+    t.string "currency"
+    t.decimal "amount"
+    t.string "payment_type"
+    t.datetime "paytime"
+    t.string "state"
+    t.integer "course_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_orders_on_course_id"
+    t.index ["order_number"], name: "index_orders_on_order_number"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -55,4 +72,6 @@ ActiveRecord::Schema.define(version: 2022_02_12_055233) do
 
   add_foreign_key "course_categories", "categories"
   add_foreign_key "course_categories", "courses"
+  add_foreign_key "orders", "courses"
+  add_foreign_key "orders", "users"
 end

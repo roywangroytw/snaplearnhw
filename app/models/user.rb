@@ -5,6 +5,7 @@ class User < ApplicationRecord
   before_create :encrypt_password
 
   has_many :courses, dependent: :destroy
+  has_many :orders
 
   validates :username, presence: { message: "帳號必填" }, 
                        uniqueness: { message: "該帳號已有人使用" }
