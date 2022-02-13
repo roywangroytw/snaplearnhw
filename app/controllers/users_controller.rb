@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       user = User.login(permit_params)
       session[:session] = user.id
+      ApiAccessToken.create(user: user)
       redirect_to '/', notice: "歡迎加入SnapLearn，開始你的學習之旅吧～"
     else
       render :signup, alert: "抱歉好像出錯了，請再嘗試一次"

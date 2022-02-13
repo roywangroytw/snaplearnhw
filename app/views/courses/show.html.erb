@@ -22,6 +22,9 @@
         <%= link_to '刪除課程', course_path(@course), method: "delete", data: { confirm: "確定要刪除此課程嗎？"} %>
       </div>
     <% end %>  
-  <% end %>  
+  <% end %>
+  <% if !course_belongs_to_user?(@course.id) %>
+    <%= link_to '前往購買', purchase_course_path(@course.slug) %>
+  <% end %> 
 
 </section>

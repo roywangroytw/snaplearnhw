@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     collection do
       get 'admin/management', to: "courses#manage"
     end
+    member do
+      get :purchase, to: "orders#purchase"
+      get :ordersuccess, to: "orders#ordersuccess"
+    end
   end
+
+  mount ApiRoot => ApiRoot::PREFIX
 
 end
