@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
 
   def index
-    @courses = Course.all.includes(:course_categories)
+    @courses = Course.where(status: "Publish").includes(:course_categories)
   end
 
   def show 
@@ -20,7 +20,7 @@ class CoursesController < ApplicationController
 
     if @course.save
       @course.categories << category
-      redirect_to courses_path, notice: "課程已建立"
+      redirect_to admin_management_courses_path, notice: "課程已建立"
     else
       render :new, alert: "抱歉，似乎出了點錯誤，請重新嘗試"
     end
@@ -44,10 +44,14 @@ class CoursesController < ApplicationController
     @course = Course.friendly.find(params[:id])
 
     if @course.destroy
-      redirect_to courses_path, notice: "課程#{@course.name}已刪除"
+      redirect_to admin_management_courses_path, notice: "課程#{@course.name}已刪除"
     else
       render :show, alert: "抱歉，似乎出了點錯誤，請重新嘗試"
     end
+  end
+
+  def manage
+    @courses = current_user.courses
   end
 
   private

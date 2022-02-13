@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   post 'verifying', to: "users#verifying"
   delete 'logout', to: "users#logout"
 
-  resources :courses
+  resources :courses do
+    collection do
+      get 'admin/management', to: "courses#manage"
+    end
+  end
 
 end

@@ -30,4 +30,8 @@ module CoursesHelper
     end  
   end
 
+  def course_status(status)
+    status == "Offshelf" ? "下架中" : "已上架"
+  end
+
 end

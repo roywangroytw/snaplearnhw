@@ -1,0 +1,48 @@
+// Place all the styles related to the courses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.pagetitle_div {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+.manage_table {
+  display: flex;
+  width: 90%;
+  height: 50px;
+  margin: auto;
+  border-bottom: 1px solid grey;
+
+  p:nth-child(1) {
+    width: 5%;
+  }
+  p:nth-child(2) {
+    width: 45%;
+  }
+  p:nth-child(3) {
+    width: 15%;
+    text-align: center;
+  }
+  p:nth-child(4) {
+    width: 15%;
+    text-align: center;
+  }
+  p:nth-child(5) {
+    width: 20%;
+    text-align: center;
+  }
+
+}
+
+.manage_table_action {
+  div {
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
