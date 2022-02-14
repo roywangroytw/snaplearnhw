@@ -49,6 +49,10 @@
 
 // Mycourses page =============
 
+.mycourses_title {
+  text-align: center;
+}
+
 .mycourses_result {
 
   .content_box {
@@ -90,4 +94,63 @@
 
   }
 
+}
+
+.filter_box {
+  width: 76.5%;
+  height: 100px;
+  max-width: 1200px;
+  margin: auto;
+  background-color: #5271FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filters {
+  width: 90%;
+  margin: auto;
+
+  form {
+    width: 100%;
+
+    .filter_selection_category {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 15px;
+
+      label {
+        margin-left: -15px;
+      }
+    }
+
+    .filter_selection_status {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      div {
+        display: flex;
+        align-items: center;
+
+        label {
+          margin-right: 10px;
+        }
+      }
+
+      input[type="submit"] {
+        border: none;
+        display: inline-block;
+        width: 100px;
+        height: 30px;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+      }
+    }
+
+  }
 }

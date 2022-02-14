@@ -1,7 +1,49 @@
-<h1>購買的課程 | Purchased Courses</h1>
+<h1 class="mycourses_title">購買的課程 | Purchased Courses</h1>
 <section data-controller="mycourses">
 
-  <div class="filters"></div>
+  <div class="filter_box">
+    <div class="filters">
+      <%= form_with(class: "filter_form") do |f| %>
+        <div class="filter_selection_category">
+          <input type="checkbox" value="1" name="course_type_1" id="course_type_1">
+          <label for="course_type_1">中文</label>
+          <input type="checkbox" value="2" name="course_type_2" id="course_type_2">
+          <label for="course_type_2">數學</label>
+          <input type="checkbox" value="3" name="course_type_3" id="course_type_3">
+          <label for="course_type_3">英文</label>
+          <input type="checkbox" value="4" name="course_type_4" id="course_type_4">
+          <label for="course_type_4">物理</label>
+          <input type="checkbox" value="5" name="course_type_5" id="course_type_5">
+          <label for="course_type_5">化學</label>
+          <input type="checkbox" value="6" name="course_type_6" id="course_type_6">
+          <label for="course_type_6">生物</label>
+          <input type="checkbox" value="7" name="course_type_7" id="course_type_7">
+          <label for="course_type_7">地理</label>
+          <input type="checkbox" value="8" name="course_type_8" id="course_type_8">
+          <label for="course_type_8">歷史</label>
+          <input type="checkbox" value="9" name="course_type_9" id="course_type_9">
+          <label for="course_type_9">公民</label>
+          <input type="checkbox" value="10" name="course_type_10" id="course_type_10">
+          <label for="course_type_10">美術</label>
+          <input type="checkbox" value="11" name="course_type_11" id="course_type_11">
+          <label for="course_type_11">音樂</label>
+          <input type="checkbox" value="12" name="course_type_12" id="course_type_12">
+          <label for="course_type_12">健教</label>
+          <input type="checkbox" value="13" name="course_type_13" id="course_type_13">
+          <label for="course_type_13">體育</label>
+
+        </div>
+        <div class="filter_selection_status">
+          <div>        
+            <%= f.label :status, "課程效期狀態" %>
+            <%= f.select :status, [["過期的課程", "Offshelf"], ["有效的課程", "Publish"]], {prompt: "請選擇"}%>
+          </div>
+          <input type="submit" value="篩選" data-action="click->mycourses#filterCourse">
+        </div>
+      
+      <% end %>
+    </div>
+  </div>
   <div class="mycourses_result container" data-mycourses-target="coursediv" data-key="<%= current_user.api_access_token.key%>">
     <div class="row mycourses_row"></div>
   </div>

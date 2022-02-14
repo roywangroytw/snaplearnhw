@@ -115,4 +115,51 @@ export default class extends Controller {
     }
 
   }
+
+  filterCourse(e) {
+
+    e.preventDefault()
+    const data = Object.fromEntries(new FormData(document.querySelector('.filter_form')).entries());
+    const keys = Object.keys(data)
+    const course_types = processType(keys)
+    const status = data.status
+    const key = this.coursedivTarget.dataset.key
+
+    async function fetch_api(data) {
+      try {
+        const csrfToken = document.querySelector("[name='csrf-token']").content
+        const response = await fetch(`/api/v0/mycourses/filter?access_key=${key}&status=${status}&course_types=${course_types}`, {
+          method: "GET",
+          headers: {
+            "X-CSRF-Token": csrfToken
+          }
+        })
+        const result = await response.json()
+        return result
+      }
+      catch {
+        console.error("Something went wrong...");
+      }
+    }
+
+    async function processApiCall() {
+      fetch_api()
+    }
+
+    processApiCall()
+
+
+
+
+    function processType(keys) {
+      const values = []
+      keys.forEach((key)=>{
+         if (key.includes("course_type_")) {
+          values.push(data[key])
+        }
+      })
+      return values
+    }
+
+  }
 }

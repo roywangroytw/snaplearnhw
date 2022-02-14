@@ -13,7 +13,19 @@ module ApiV0
 
     desc "Get all purchased courses by filters"
 
+    # params do
+    #   requires :status, type: String
+    #   requires :course_types, type: String
+    # end
+
     get '/mycourses/filter' do
+
+      puts "=============="
+      puts params[:data]
+      puts params[:status]
+      puts params[:course_types]
+      puts "=============="
+
     end
 
   end
