@@ -39,6 +39,7 @@ export default class extends Controller {
           const status = determineCourseStatus(valid_until)
           const currency_sign = determineCurrency(currency)
           const paytime_date = convertDate(paytime)
+          const expiration_date = convertDate(valid_until)
           messagediv.classList.add("mycourses_item", "col-12", "col-md-6", "col-lg-4")
 
           messagediv.innerHTML =
@@ -53,6 +54,7 @@ export default class extends Controller {
               <p><span>金額:</span> <span>${currency_sign}</span>${amount}</p>
               <p><span>付款方式:</span> ${payment_type}</p>
               <p><span>付款時間:</span> ${paytime_date}</p>
+              <p><span>課程過期日期:</span> ${expiration_date}</p>
             </div>
             <div class="mycourses_item_link">
               <a href="http://localhost:3000/courses/${slug}">前往課程頁</a>
