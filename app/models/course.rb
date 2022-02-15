@@ -23,21 +23,21 @@ class Course < ApplicationRecord
 
     if course_types.length != 0
       if status == "Active"
-        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND orders.valid_until >= ? AND categories.id in (?)', user_id, today, course_types)
+        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND orders.valid_until >= ? AND categories.id in (?)', user_id, today, course_types).select("*")
         return courses
       elsif status == "Expired"
-        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND orders.valid_until < ? AND categories.id in (?)', user_id, today, course_types)
+        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND orders.valid_until < ? AND categories.id in (?)', user_id, today, course_types).select("*")
         return courses
       elsif status == ""
-        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND categories.id in (?)', user_id, course_types)
+        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND categories.id in (?)', user_id, course_types).select("*")
         return courses
       end
     else
       if status == "Active"
-        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND orders.valid_until >= ?', user_id, today)
+        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND orders.valid_until >= ?', user_id, today).select("*")
         return courses
       elsif status == "Expired"
-        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND orders.valid_until < ?', user_id, today)
+        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND orders.valid_until < ?', user_id, today).select("*")
         return courses
       end
     end 

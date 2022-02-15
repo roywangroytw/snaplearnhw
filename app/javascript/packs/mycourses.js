@@ -5,7 +5,7 @@ export function renderData(api_response) {
 
     const messagediv = document.createElement("div")
     let { name, slug, orders } = course
-    let { order_number, currency, amount, payment_type, paytime, valid_until } = orders[0]
+    let { order_number, currency, amount, payment_type, paytime, valid_until } = orders
   
     const status = determineCourseStatus(valid_until)
     const currency_sign = determineCurrency(currency)

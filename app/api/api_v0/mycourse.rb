@@ -6,7 +6,7 @@ module ApiV0
 
     get '/mycourses' do
 
-      courses = Course.joins(:orders).where('orders.user_id = ?', current_user.id)
+      courses = Course.joins(:orders).where('orders.user_id = ?', current_user.id).select("*")
       present courses, with: ApiV0::Entities::Mycourse
       
     end
