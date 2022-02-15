@@ -8,6 +8,7 @@
 // </div>
 
 import { Controller } from "stimulus"
+import { getCookie } from "../packs/retrievetoken"
 
 export default class extends Controller {
   static targets = [ "purchasebtn", "paymentselector" ]
@@ -16,11 +17,10 @@ export default class extends Controller {
     
     const selector = this.paymentselectorTarget
     const paymentType = selector.dataset.type
-
     const urlString = window.location.href;
     const decomposedUrl = urlString.split("/")
     const id = decomposedUrl[4]
-    const key = this.purchasebtnTarget.dataset.key
+    const key = getCookie("snapToken")
 
     async function fetch_api() {
       try {

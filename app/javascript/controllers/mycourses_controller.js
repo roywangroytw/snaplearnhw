@@ -1,12 +1,13 @@
 import { Controller } from "stimulus"
 import { renderData } from "../packs/mycourses"
+import { getCookie } from "../packs/retrievetoken"
 
 export default class extends Controller {
   static targets = [ "coursediv" ]
 
   connect(){
 
-    const key = this.coursedivTarget.dataset.key
+    const key = getCookie("snapToken")
     
     async function fetch_api() {
       try {
@@ -48,9 +49,7 @@ export default class extends Controller {
     const keys = Object.keys(data)
     const course_types = processType(keys)
     const status = data.status
-    const key = this.coursedivTarget.dataset.key
-
-    console.log(course_types);
+    const key = getCookie("snapToken")
 
     async function fetch_filter_api() {
       try {

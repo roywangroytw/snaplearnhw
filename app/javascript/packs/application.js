@@ -16,3 +16,4 @@ import 'stylesheets'
 
 import "controllers"
 import "./mycourses.js"
+import "./retrievetoken.js"
