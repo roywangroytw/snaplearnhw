@@ -4,7 +4,14 @@ module ApiV0
       expose :name
       expose :introduction
       expose :slug
-      expose :orders, using: ApiV0::Entities::Order
+      expose :orders do
+        expose :order_number
+        expose :currency
+        expose :amount
+        expose :payment_type
+        expose :paytime
+        expose :valid_until
+      end
     end
   end
 end
