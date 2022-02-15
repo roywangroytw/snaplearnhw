@@ -1,5 +1,3 @@
-require 'json'
-
 module ApiV0
   class Mycourse < Grape::API
     before { authenticate! }
@@ -23,8 +21,15 @@ module ApiV0
     get '/mycourses/filter' do
 
       status = params[:status]
-      course_types = JSON.parse(params[:course_types])
+      course_types = params[:course_types].split(",").map(&:to_i) 
       user_id = current_user.id
+
+      puts "================================"
+      p course_types
+      p status
+      p status.kind_of?(String)
+      p course_types.kind_of?(Array)
+      puts "================================"
 
       if status == "" && course_types.length == 0
         status 200
