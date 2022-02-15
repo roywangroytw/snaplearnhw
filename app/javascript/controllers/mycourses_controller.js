@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import { renderData } from "../packs/mycourses"
 
 export default class extends Controller {
   static targets = [ "coursediv" ]
@@ -26,43 +27,9 @@ export default class extends Controller {
 
     async function processingApiCall() {
       const api_response = await fetch_api()
-      const resultdiv = document.querySelector(".mycourses_row")
       
       if (api_response.length !== 0) {
-
-        api_response.forEach((course) => {
-
-          const messagediv = document.createElement("div")
-          let { name, slug, orders } = course
-          let { order_number, currency, amount, payment_type, paytime, valid_until } = orders[0]
-        
-          const status = determineCourseStatus(valid_until)
-          const currency_sign = determineCurrency(currency)
-          const paytime_date = convertDate(paytime)
-          messagediv.classList.add("mycourses_item", "col-12", "col-md-6", "col-lg-4")
-
-          messagediv.innerHTML =
-          `
-          <div class="content_box">
-            <div class="mycourses_item_title">
-              <h3>${name}</h3>
-              <p>${status}</p>
-            </div>
-            <div class="mycourses_item_details">
-              <p><span>單號:</span> ${order_number}</p>
-              <p><span>金額:</span> <span>${currency_sign}</span>${amount}</p>
-              <p><span>付款方式:</span> ${payment_type}</p>
-              <p><span>付款時間:</span> ${paytime_date}</p>
-            </div>
-            <div class="mycourses_item_link">
-              <a href="http://localhost:3000/courses/${slug}">前往課程頁</a>
-            </div>
-          </div>
-
-          `
-          resultdiv.appendChild(messagediv)
-
-        })
+        renderData(api_response)
       } else {
         const messagediv = document.createElement("div")
         messagediv.innerText = "目前您尚未購買過任何課程"
@@ -72,45 +39,70 @@ export default class extends Controller {
     
     processingApiCall();
 
-    function determineCourseStatus(valid_until) {
-      const today = new Date().toISOString().slice(0, 10)
+  }
 
-      if (valid_until > today) {
-        const valid_until = "開放中"
-        return valid_until 
-      } else {
-        const valid_until = "已過期"
-        return valid_until 
+  filterCourse(e) {
+
+    e.preventDefault()
+    const data = Object.fromEntries(new FormData(document.querySelector('.filter_form')).entries());
+    const keys = Object.keys(data)
+    const course_types = processType(keys)
+    const status = data.status
+    const key = this.coursedivTarget.dataset.key
+
+    console.log(course_types);
+
+    async function fetch_filter_api() {
+      try {
+        const csrfToken = document.querySelector("[name='csrf-token']").content
+        const response = await fetch(`/api/v0/mycourses/filter?access_key=${key}&status=${status}&course_types=${course_types}`, {
+          method: "GET",
+          headers: {
+            "X-CSRF-Token": csrfToken
+          }
+        })
+        const result = await response.json()
+        return result
+      }
+      catch {
+        console.error("Something went wrong...");
       }
     }
 
-    function determineCurrency(currency) {
-      if (currency === "TWD") {
-        const sign = "新台幣(NT$)"
-        return sign
-      } else if (currency === "USD") {
-        const sign = "美金($)"
-        return sign
-      } else if (currency === "GBP") {
-        const sign = "英鎊(£)"
-        return sign
-      } else if (currency === "EUR") {
-        const sign = "歐元(€)"
-        return sign
-      } else if (currency === "SGD") {
-        const sign = "新加坡幣(SG$)"
-        return sign
+    async function processApiCall() {
+      const api_response = await fetch_filter_api()
+
+      console.log(api_response);
+
+      if (api_response.length !== 0) {
+        const resultdiv = document.querySelector(".mycourses_row")
+        resultdiv.innerHTML = ""
+        renderData(api_response)
       } else {
-        const sign = "日幣(¥)"
-        return sign
+        const messagediv = document.createElement("div")
+        const resultdiv = document.querySelector(".mycourses_row")
+        resultdiv.innerHTML = ""
+        messagediv.innerText = "沒有符合篩選條件的課程"
+        resultdiv.appendChild(messagediv)
       }
     }
 
-    function convertDate(paytime) {
-      const date = new Date(paytime)
-      const formatted_date = date.getFullYear() + "/" + (date.getMonth()+1) + "/" + date.getDate()
-      return formatted_date
+    processApiCall()
+
+    function processType(keys) {
+      const values = []
+      keys.forEach((key)=>{
+         if (key.includes("course_type_")) {
+          values.push(parseInt(data[key]))
+        }
+      })
+      return values
     }
 
+  }
+
+  removeFilters(e){
+    e.preventDefault()
+    location.reload()
   }
 }

@@ -17,5 +17,30 @@ class Course < ApplicationRecord
                                   format: { with: /[a-zA-Z0-9]/, message: "只能包含英文字母與數字"}
 
   private
+
+  def self.filter_courses(status, course_types, user_id)
+    today = DateTime.now
+
+    if course_types.length != 0
+      if status == "Active"
+        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND orders.valid_until >= ? AND categories.id in (?)', user_id, today, course_types)
+        return courses
+      elsif status == "Expired"
+        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND orders.valid_until < ? AND categories.id in (?)', user_id, today, course_types)
+        return courses
+      elsif status == ""
+        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND categories.id in (?)', user_id, course_types)
+        return courses
+      end
+    else
+      if status == "Active"
+        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND orders.valid_until >= ?', user_id, today)
+        return courses
+      elsif status == "Expired"
+        courses = Course.joins(:orders).joins(:categories).where('orders.user_id = ? AND orders.valid_until < ?', user_id, today)
+        return courses
+      end
+    end 
+  end
   
 end

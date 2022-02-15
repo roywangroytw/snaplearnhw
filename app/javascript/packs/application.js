@@ -15,3 +15,4 @@ ActiveStorage.start()
 import 'stylesheets'
 
 import "controllers"
+import "./mycourses.js"
