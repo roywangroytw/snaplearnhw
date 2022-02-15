@@ -24,13 +24,6 @@ module ApiV0
       course_types = params[:course_types].split(",").map(&:to_i) 
       user_id = current_user.id
 
-      puts "================================"
-      p course_types
-      p status
-      p status.kind_of?(String)
-      p course_types.kind_of?(Array)
-      puts "================================"
-
       if status == "" && course_types.length == 0
         status 200
         { status: "not ok", message: "At least one of the filter criteria has to be provided" }

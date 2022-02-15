@@ -28,7 +28,7 @@ export default class extends Controller {
     async function processingApiCall() {
       const api_response = await fetch_api()
       
-      if (api_response[0].name) {
+      if (api_response.length !== 0) {
         renderData(api_response)
       } else {
         const messagediv = document.createElement("div")
@@ -74,19 +74,20 @@ export default class extends Controller {
 
       console.log(api_response);
 
-      if (api_response[0].name) {
+      if (api_response.length !== 0) {
         const resultdiv = document.querySelector(".mycourses_row")
         resultdiv.innerHTML = ""
         renderData(api_response)
       } else {
-
+        const messagediv = document.createElement("div")
+        const resultdiv = document.querySelector(".mycourses_row")
+        resultdiv.innerHTML = ""
+        messagediv.innerText = "沒有符合篩選條件的課程"
+        resultdiv.appendChild(messagediv)
       }
     }
 
     processApiCall()
-
-
-
 
     function processType(keys) {
       const values = []
@@ -98,5 +99,10 @@ export default class extends Controller {
       return values
     }
 
+  }
+
+  removeFilters(e){
+    e.preventDefault()
+    location.reload()
   }
 }
