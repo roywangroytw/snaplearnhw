@@ -36,7 +36,7 @@
         <div class="filter_selection_status">
           <div>        
             <%= f.label :status, "課程效期狀態" %>
-            <%= f.select :status, [["過期的課程", "Offshelf"], ["有效的課程", "Publish"]], {prompt: "請選擇"}%>
+            <%= f.select :status, [["過期的課程", "Expired"], ["有效的課程", "Active"]], {prompt: "請選擇"}%>
           </div>
           <input type="submit" value="篩選" data-action="click->mycourses#filterCourse">
         </div>

@@ -1,3 +1,5 @@
+require 'json'
+
 module ApiV0
   class Mycourse < Grape::API
     before { authenticate! }
@@ -13,18 +15,24 @@ module ApiV0
 
     desc "Get all purchased courses by filters"
 
-    # params do
-    #   requires :status, type: String
-    #   requires :course_types, type: String
-    # end
+    params do
+      requires :status, type: String
+      requires :course_types, type: String
+    end
 
     get '/mycourses/filter' do
 
-      puts "=============="
-      puts params[:data]
-      puts params[:status]
-      puts params[:course_types]
-      puts "=============="
+      status = params[:status]
+      course_types = JSON.parse(params[:course_types])
+      user_id = current_user.id
+
+      if status == "" && course_types.length == 0
+        status 200
+        { status: "not ok", message: "At least one of the filter criteria has to be provided" }
+      else
+        courses = Course.filter_courses(status, course_types, user_id)
+        present courses, with: ApiV0::Entities::Mycourse
+      end
 
     end
 
