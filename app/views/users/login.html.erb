@@ -1,19 +1,22 @@
-<h1>登入SnapLearn</h1>
+<h1 class="login_title">登入SnapLearn</h1>
+<div class="login_form_outter">
+  <div class="login_form">
+    <%= form_with(model: @user, url: verifying_path) do |f| %>
 
-<%= form_with(model: @user, url: verifying_path) do |f| %>
-
-  <div>
-    <%= f.label :username, "Username" %>
-    <%= f.text_field :username, required: true %>
-  </div>	
-
-  <div>
-    <%= f.label :password, "Password" %>
-    <%= f.password_field :password, required: true %>
-  </div>	
-
-  <div>
-    <%= f.submit '登入' %>
-  </div>	
-
-<% end %>
+      <div>
+        <%= f.label :username, "Username" %>
+        <%= f.text_field :username, required: true %>
+      </div>	
+    
+      <div>
+        <%= f.label :password, "Password" %>
+        <%= f.password_field :password, required: true %>
+      </div>	
+    
+      <div class="login_btn_box">
+        <%= f.submit '登入' %>
+      </div>	
+    
+    <% end %>
+  </div>
+<div>

@@ -2,11 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.purchase_title {
+  text-align: center;
+}
+
 .payment_section {
   display: flex;
   width: 90%;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   margin: auto;
 
   .payment_titles {
@@ -14,10 +18,35 @@
   }
 
   .payment_product_details {
-    width: 48%;
+    width: 40%;
+    margin-right: 40px;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    padding: 20px 20px;
+
+    h2 {
+      background: linear-gradient(332deg, rgba(82,113,255,1) 0%, rgba(18,18,18,1) 49%);
+      color: white;
+      height: 55px;
+      line-height: 55px;
+      padding-left: 20px;
+      border-bottom: 2px solid #5271FF;
+    }
   }
   .payment_details {
-    width: 48%;
+    width: 40%;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    padding: 20px 20px;
+
+    h2 {
+      background: linear-gradient(332deg, rgba(82,113,255,1) 0%, rgba(18,18,18,1) 49%);
+      color: white;
+      height: 55px;
+      line-height: 55px;
+      padding-left: 20px;
+      border-bottom: 2px solid #5271FF;
+    }
 
     div {
       margin-bottom: 20px;
@@ -38,6 +67,25 @@
         width: 70px;
       }
     }
+
+    .purchase_btn_box {
+      width: 100%;
+      display: flex;
+
+      .confirm_purchase_btn {
+        display: inline-block;
+        height: 40px;
+        width: 200px;
+        border: none;
+        background-color: #5271FF;
+        color: white;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        margin-left: auto;
+        cursor: pointer;
+      }
+    }
+
   }
 
 }
@@ -53,7 +101,7 @@
   border-radius: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   position: relative;
-  bottom: 250px;
+  bottom: 500px;
   display: none;
 
   img {

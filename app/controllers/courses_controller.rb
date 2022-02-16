@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
 
-  before_action :authenticate_admin, except: [:index, :mycourses]
+  before_action :authenticate_admin, except: [:index, :show,:mycourses]
   before_action :authenticate_user, only: [:mycourses]
 
   def index
