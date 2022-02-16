@@ -22,4 +22,6 @@ Rails.application.routes.draw do
 
   mount ApiRoot => ApiRoot::PREFIX
 
+  match '*path' => redirect('/'), :via => :all
+
 end
