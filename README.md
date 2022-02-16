@@ -16,6 +16,8 @@ Snapask技術實作作業
 - 查詢已購買的課程 ( BE API built with Grape & Gape Entity gem )
 - 篩選已購買的課程 by 課程主題 or 課程效期 ( BE API built with Grape & Gape Entity gem )
 
+註：因為時間緊迫，因此沒有寫加分題：Rspec & 部署
+
 # Implementation介紹：
 
 ## 1.使用者系統<br/>
