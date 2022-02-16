@@ -112,3 +112,20 @@
 .order_loader_show {
   display: flex;
 }
+
+// Flash error message
+
+.flash_message_payment {
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  position: absolute;
+  top: 60px;
+  left: 0px;
+
+  p {
+    background-color: #243065;
+    color: white;
+    margin-top: 0px;
+  }
+}

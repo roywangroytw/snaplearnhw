@@ -45,7 +45,7 @@ class CoursesController < ApplicationController
     @course = Course.friendly.find(params[:id])
 
     if @course.destroy
-      redirect_to admin_management_courses_path, notice: "課程#{@course.name}已刪除"
+      redirect_to admin_management_courses_path, notice: "課程 [#{@course.name}] 已刪除"
     else
       render :show, alert: "抱歉，似乎出了點錯誤，請重新嘗試"
     end
