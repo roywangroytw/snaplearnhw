@@ -41,7 +41,7 @@ export default class extends Controller {
 
     async function processingApiCall() {
       const apiResponse = await fetch_api()
-      const paymentErrorDiv = document.querySelector(".payment_error_message")
+      const paymentErrorDiv = document.querySelector(".flash_message_payment")
 
       if (apiResponse.status === "success") {
 

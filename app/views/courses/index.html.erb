@@ -2,9 +2,6 @@
   <div class="allcourses_content">
     <div class="allcourses_title">
       <h1>SnapLearn 課程總覽</h1>
-      <% if user_is_admin? %>
-        <%= link_to '創建新課程', new_course_path %>
-      <% end %>
     </div>
 
     <% @courses.each do |course| %>
