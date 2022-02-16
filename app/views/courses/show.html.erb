@@ -22,18 +22,24 @@
       </div>
 
     </div>
-    
-    <% if user_is_admin? %>
-      <% if course_belongs_to_user?(@course.id) %>
-        <div class="courseshow_action_btn_box">
-          <%= link_to '修改課程', edit_course_path(@course) %>
-          <%= link_to '刪除課程', course_path(@course), method: "delete", data: { confirm: "確定要刪除此課程嗎？"} %>
-        </div>
-      <% end %>  
-    <% end %>
-    <% if !course_belongs_to_user?(@course.id) %>
+
+    <% if user_is_login? %>
+      <% if user_is_admin? %>
+        <% if course_belongs_to_user?(@course.id) %>
+          <div class="courseshow_action_btn_box">
+            <%= link_to '修改課程', edit_course_path(@course) %>
+            <%= link_to '刪除課程', course_path(@course), method: "delete", data: { confirm: "確定要刪除此課程嗎？"} %>
+          </div>
+        <% end %>  
+      <% end %>
+      <% if !course_belongs_to_user?(@course.id) %>
+        <%= link_to '前往購買', purchase_course_path(@course.slug), class: "courseshow_purchase_btn" %>
+      <% end %> 
+    <% else %>
       <%= link_to '前往購買', purchase_course_path(@course.slug), class: "courseshow_purchase_btn" %>
-    <% end %> 
+    <% end %>
+
+
   </div>
 
 </section>
