@@ -1,5 +1,8 @@
 <div class="header">
-  <img src="/images/snaplearn_logo.png">
+  <div>
+    <img src="/images/snaplearn_logo.png">
+    <i class="fi-xnsuxl-open-book-solid"></i><%= link_to "查看所有課程", courses_path %>
+  </div>
 
   <% if user_is_login? %>
     <div class="header_link_box_login">

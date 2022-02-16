@@ -1,0 +1,121 @@
+nav {
+  width: 100%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.header {
+  width: 90%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+
+  div:nth-child(1) {
+    width: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+      width: 200px;
+    }
+
+    a {
+      color: black;
+    }
+
+  }
+
+
+  .header_link_box_logout {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      display: inline-block;
+      width: 100px;
+      height: 30px;
+      line-height: 30px;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    a:nth-child(1) {
+      background-color: #5271FF;
+    }
+    a:nth-child(2) {
+      box-sizing: border-box;
+      background-color: #39B6FF;
+    }
+  }
+
+  .header_link_box_login {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      display: inline-block;
+      width: 100px;
+      height: 30px;
+      line-height: 30px;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    a:nth-child(1) {
+      background-color: #5271FF;
+    }
+    a:nth-child(2) {
+      box-sizing: border-box;
+      color: #FF5C5C;
+      border: 1px solid #FF5C5C;
+    }
+  }
+
+  .header_link_box_login_admin {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      display: inline-block;
+      width: 90px;
+      height: 30px;
+      line-height: 30px;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    a:nth-child(2) {
+      background-color: #39B6FF;
+      color: black;
+      width: 50px;
+      border: none;
+    }
+    a:nth-child(1) {
+      background-color: #5271FF;
+      color: black;
+      border: none;
+    }
+    a:nth-child(3) {
+      box-sizing: border-box;
+      color: #FF5C5C;
+      border: 1px solid #FF5C5C;
+      width: 50px;
+    }
+  }
+}
