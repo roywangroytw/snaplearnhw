@@ -1,0 +1,70 @@
+.edit_title, .new_title {
+  text-align: center;
+}
+
+.form_outter {
+  width: 100%;
+  height: calc( 100vh - 160px);
+  background: linear-gradient(0deg, rgba(82,113,255,1) 0%, rgba(18,18,18,0) 94%);
+
+}
+
+.course_form {
+  margin: auto;
+  width: 400px;
+  padding: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  border-top: 4px solid #5271FF;
+  border-bottom: 4px solid #5271FF;
+  background-color: #fff;
+
+  label {
+    display: block;
+    font-weight: 500;
+    font-size: 1.1rem;
+    border-top: 1px solid rgb(171, 171, 171);
+  }
+
+  input {
+    padding-left: 5px;
+    height: 20px;
+    margin-bottom: 15px;
+  }
+
+  input.course_name_field {
+    width: calc(100% - 10px);
+  }
+
+  input.course_price_field {
+    width: calc( 100% - 127px);
+  }
+
+  input.course_url_field {
+    width: calc( 100% - 214px);
+  }
+
+  select, textarea {
+    margin-bottom: 15px;
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+  }
+
+  .form_btn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    input {
+      display: inline-block;
+      width: 200px;
+      height: 30px;
+      background-color: #5271FF;
+      border: none;
+      color: white;
+    }
+  }
+
+}
