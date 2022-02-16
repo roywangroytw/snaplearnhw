@@ -71,19 +71,28 @@ export default class extends Controller {
     async function processApiCall() {
       const api_response = await fetch_filter_api()
 
-      console.log(api_response);
+      if (api_response.status === 'not ok') {
+        const messageDiv = document.querySelector(".flash_message_mycourses")
+        const message = document.createElement("p")
+        message.innerText = "您沒有提供任何篩選條件!"
+        messageDiv.appendChild(message)
 
-      if (api_response.length !== 0) {
-        const resultdiv = document.querySelector(".mycourses_row")
-        resultdiv.innerHTML = ""
-        renderData(api_response)
       } else {
-        const messagediv = document.createElement("div")
-        const resultdiv = document.querySelector(".mycourses_row")
-        resultdiv.innerHTML = ""
-        messagediv.innerText = "沒有符合篩選條件的課程"
-        resultdiv.appendChild(messagediv)
+
+        if (api_response.length !== 0) {
+
+          const resultdiv = document.querySelector(".mycourses_row")
+          resultdiv.innerHTML = ""
+          renderData(api_response)
+        } else {
+          const messagediv = document.createElement("div")
+          const resultdiv = document.querySelector(".mycourses_row")
+          resultdiv.innerHTML = ""
+          messagediv.innerText = "沒有符合篩選條件的課程"
+          resultdiv.appendChild(messagediv)
+        }
       }
+      
     }
 
     processApiCall()
