@@ -1,22 +1,27 @@
-<div>
-  <h1>所有課程</h1>
-  <% if user_is_admin? %>
-    <%= link_to '創建新課程', new_course_path %>
-  <% end %>
-</div>
+<section class="allcourses">
+  <div class="allcourses_content">
+    <div class="allcourses_title">
+      <h1>SnapLearn 課程總覽</h1>
+      <% if user_is_admin? %>
+        <%= link_to '創建新課程', new_course_path %>
+      <% end %>
+    </div>
 
-<% @courses.each do |course| %>
-  <div>
-    <h2><%= course.name %> | <span><%= course.categories[0].name %></span></h2>
-    <p><%= course.introduction %></p>
-    <p>
-      <span><%= currency_sign(course.currency) %></span>
-      <%= course.price %>
-    </p>
-    <p>
-      <span>效期:</span>
-      <span><%= course.validity_duration %> 天</span>
-    </p>
-    <%= link_to "查看課程", course_path(course.slug) %>
+    <% @courses.each do |course| %>
+      <div class="allcourses_item">
+        <h2><%= course.name %> | <span><%= course.categories[0].name %></span></h2>
+        <p class="allcourses_intro"><%= course.introduction %></p>
+        <p class="allcourses_price">
+          <span><%= currency_sign(course.currency) %></span>
+          <%= course.price %>
+        </p>
+        <p class="allcourses_duration">
+          <span>效期:</span>
+          <span><%= course.validity_duration %> 天</span>
+        </p>
+        <%= link_to "查看課程", course_path(course.slug), class:"allcourses_btn" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+  
+</section>

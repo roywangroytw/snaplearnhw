@@ -1,47 +1,55 @@
-<h1>註冊SnapLearn</h1>
+<h1 class="signup_title">註冊SnapLearn</h1>
+<div class="signup_form_outter">
 
-<%= form_with(model: @user, url: registering_path) do |f| %>
+  <div class="signup_form">
 
-  <div>
-    <%= f.label :username, "Username" %>
-    <%= f.text_field :username, required: true %>
-    <% if f.object.errors[:username]%>
-      <span><%= f.object.errors[:username][0] %></span>
+    <%= form_with(model: @user, url: registering_path) do |f| %>
+
+      <div>
+        <%= f.label :username, "Username" %>
+        <%= f.text_field :username, required: true %>
+        <% if f.object.errors[:username]%>
+          <span><%= f.object.errors[:username][0] %></span>
+        <% end %>
+      </div>	
+
+      <div>
+        <%= f.label :email, "Email" %>
+        <%= f.email_field :email, required: true %>
+        <% if f.object.errors[:email]%>
+          <span><%= f.object.errors[:email][0] %></span>
+        <% end %>
+      </div>	
+
+
+      <div>
+        <%= f.label :password, "Password" %>
+        <%= f.password_field :password, required: true %>
+        <% if f.object.errors[:password]%>
+        <span><%= f.object.errors[:password][0] %></span>
+        <% end %>
+      </div>
+      
+      <div>
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation, required: true %>
+        <% if f.object.errors[:password_confirmation]%>
+        <span><%= f.object.errors[:password_confirmation][0] %></span>
+        <% end %>
+      </div>
+
+      <div>
+        <%= f.check_box :course_creator %>
+        <%= f.label :course_creator, "Become a course contributor too!" %>
+      </div>
+
+      <div class="signup_btn_box">
+        <%= f.submit '註冊' %>
+      </div>	
+
     <% end %>
-  </div>	
 
-  <div>
-    <%= f.label :email, "Email" %>
-    <%= f.email_field :email, required: true %>
-    <% if f.object.errors[:email]%>
-      <span><%= f.object.errors[:email][0] %></span>
-    <% end %>
-  </div>	
-
-
-  <div>
-    <%= f.label :password, "Password" %>
-    <%= f.password_field :password, required: true %>
-    <% if f.object.errors[:password]%>
-    <span><%= f.object.errors[:password][0] %></span>
-    <% end %>
   </div>
-  
-  <div>
-    <%= f.label :password_confirmation, "Confirm Password" %>
-    <%= f.password_field :password_confirmation, required: true %>
-    <% if f.object.errors[:password_confirmation]%>
-    <span><%= f.object.errors[:password_confirmation][0] %></span>
-    <% end %>
-  </div>
 
-  <div>
-    <%= f.check_box :course_creator %>
-    <%= f.label :course_creator, "Become a course contributor too!" %>
-  </div>
 
-  <div>
-    <%= f.submit '註冊' %>
-  </div>	
-
-<% end %>
+</div>

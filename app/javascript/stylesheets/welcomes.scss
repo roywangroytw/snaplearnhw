@@ -14,111 +14,78 @@ body {
   padding-top: 60px;
 }
 
-nav {
+.welcome_box {
+  text-align: center;
   width: 100%;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-  background-color: #fff;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .welcome_details {
+    width: 40%;
+    height: 400px;
+    background-color: white;
+    padding: 30px;
+    border-top: 4px solid #5271FF;
+    border-bottom: 4px solid #5271FF;
+
+    img:nth-of-type(1) {
+      margin-top: 30px;
+    }
+
+    .assignment_title {
+      font-size: 1.2rem;
+    }
+
+    .welcome_links_box {
+      a {
+        display: inline-block;
+        text-decoration: none;
+        margin-right: 10px;
+        background-color: black;
+        width: 180px;
+        text-align: center;
+        color: white;
+        border-radius: 15px;
+      }
+
+      a:hover {
+        background-color: #5271FF;
+      }
+
+    }
+
+    .assignment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 200px;
+        margin-top: 0px;
+      }
+    }
+
+  }
+
+  background: linear-gradient(0deg, rgba(82,113,255,1) 0%, rgba(18,18,18,0) 94%);
+
 }
 
-.header {
-  width: 90%;
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: auto;
+// flash message
 
-  img {
-    width: 200px;
-  }
+.flash_message {
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  position: absolute;
+  top: 60px;
+  left: 0px;
 
-  .header_link_box_logout {
-    width: 210px;
-    display: flex;
-    justify-content: space-between;
-
-    a {
-      display: inline-block;
-      width: 100px;
-      height: 30px;
-      line-height: 30px;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-
-    a:nth-child(1) {
-      background-color: #5271FF;
-    }
-    a:nth-child(2) {
-      box-sizing: border-box;
-      background-color: #39B6FF;
-    }
-  }
-
-  .header_link_box_login {
-    width: 210px;
-    display: flex;
-    justify-content: space-between;
-
-    a {
-      display: inline-block;
-      width: 100px;
-      height: 30px;
-      line-height: 30px;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-
-    a:nth-child(1) {
-      background-color: #5271FF;
-    }
-    a:nth-child(2) {
-      box-sizing: border-box;
-      color: #FF5C5C;
-      border: 1px solid #FF5C5C;
-    }
-  }
-
-  .header_link_box_login_admin {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-
-    a {
-      display: inline-block;
-      width: 90px;
-      height: 30px;
-      line-height: 30px;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-
-    a:nth-child(2) {
-      background-color: #39B6FF;
-      color: black;
-      width: 50px;
-      border: none;
-    }
-    a:nth-child(1) {
-      background-color: #5271FF;
-      color: black;
-      border: none;
-    }
-    a:nth-child(3) {
-      box-sizing: border-box;
-      color: #FF5C5C;
-      border: 1px solid #FF5C5C;
-      width: 50px;
-    }
+  p {
+    background-color: #243065;
+    color: white;
+    margin-top: 0px;
   }
 }

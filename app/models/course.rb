@@ -1,6 +1,6 @@
 class Course < ApplicationRecord
   has_many :course_categories, dependent: :delete_all
-  has_many :categories, through: :course_categories
+  has_many :categories, through: :course_categories  #雖然說我前端目前只給使用者選一種category, 但考慮到未來可能會擴充變成多對多，所以就先這麼做了
   has_many :orders
 
   extend FriendlyId

@@ -1,4 +1,4 @@
-<div>
+<div class="purchase_title">
   <h1>購買課程</h1>
 </div>
 <div class="payment_error_message"></div>
@@ -53,9 +53,12 @@
       <p class="payment_titles">信用卡後三碼:</p>
       <input type="number">
     </div>
-    <button data-purchase-target="purchasebtn" 
-            data-action="click->purchase#makeOrder"
-            class="payment_btn">確認購買</button>
+    <div class="purchase_btn_box">
+      <button class="confirm_purchase_btn"
+      data-purchase-target="purchasebtn" 
+      data-action="click->purchase#makeOrder"
+      class="payment_btn">確認購買</button>
+    </div>
   </div>
 </section>
 <div class="order_loader">
