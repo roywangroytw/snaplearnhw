@@ -53,7 +53,7 @@ Snapask技術實作作業
 所有公開的(上架的）課程皆會在/courses頁面被呈現給使用者（登入/登出使用者皆可access)
 ![Screenshot 2022-02-16 at 17 52 09](https://user-images.githubusercontent.com/86815575/154243383-306a0551-c4d5-4d84-9b57-4324aab80cac.png)
 
-單一課程的show頁面
+單一課程的show頁面（登入/登出使用者皆可access)
 ![Screenshot 2022-02-16 at 17 51 39](https://user-images.githubusercontent.com/86815575/154243541-b358152a-6c53-4f18-b63f-bc5aabdaa57e.png)
 
 當使用者剛好是該課程的creator, 也會直接在單一課程頁面直接給予刪除＆更新按鈕
