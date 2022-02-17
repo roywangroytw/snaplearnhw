@@ -34,7 +34,7 @@ Snapask技術實作作業
 當使用者為admin, header有管理按鈕，提供admin去針對課程做管理 ( course creator; 註冊時勾選 )
 ![Screenshot 2022-02-16 at 17 50 51](https://user-images.githubusercontent.com/86815575/154241706-735406a8-5bee-4efc-912f-38ea080cb6b7.png)
 
-當使用者為非admin, header沒有管理按鈕 ( course creator; 註冊時勾選 )
+當使用者為非admin, header沒有管理按鈕
 ![Screenshot 2022-02-16 at 17 51 12](https://user-images.githubusercontent.com/86815575/154241727-9df8f5cd-1746-4da0-94cd-0ac8fb6236c4.png)
 
 ## 2.課程CRUD<br/>
