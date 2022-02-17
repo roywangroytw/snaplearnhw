@@ -74,7 +74,7 @@ Snapask技術實作作業
 重複購買提示
 ![Screenshot 2022-02-16 at 18 20 54](https://user-images.githubusercontent.com/86815575/154244825-f4702b13-c0c3-4f7c-b377-43e2e0ccd8ef.png)
 
-購買loader
+判斷可以購買後，會有loading animation讓使用體驗好一點
 ![Screenshot 2022-02-16 at 18 21 12](https://user-images.githubusercontent.com/86815575/154244862-b409656c-de5d-4866-b485-5fe270e867a4.png)
 
 ## 3.已購買的課程查詢&篩選<br/>
