@@ -83,7 +83,7 @@ Snapask技術實作作業
 - 篩選按鈕click事件會觸發calling API ( built with Grape & Gape Entity gem )
 - 顯示基本課程資訊＆付款資訊
 - 篩選功能可以使用效期or主題來進行篩選，可擇其一使用或者兩者並用
-- 如果不勾選任何篩選filter就送出表單，顯示使用者
+- 如果不勾選任何篩選filter就送出表單，會提示使用者
 
 ![Screenshot 2022-02-16 at 17 51 23](https://user-images.githubusercontent.com/86815575/154246217-a9f4bd75-184f-4439-90bd-aa5add111871.png)
 ![Screenshot 2022-02-16 at 18 40 28](https://user-images.githubusercontent.com/86815575/154248826-e363be3d-d767-45b2-85a9-c0fb7d80e579.png)
